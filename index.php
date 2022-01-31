@@ -36,7 +36,19 @@ $samsung_s21 = new Samsung('Samsung', 'S21', 800, 'android');
 
 $iphone_13 = new Iphone('Iphone', '13', 1000, 'IOS','');
 
-$huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '');
+
+try {
+    $huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '','ciao');
+} catch(Exception $e) {
+    // Mandare una mail all'amministatore del sito e al programmatore.
+
+    // Scrittura nel file di log.
+    error_log($e);
+
+    // Gestione fatal error
+    echo '<div style="border: 1px solid red; color: red;">Stiamo effettuando una manutenzione ordinaria dei nostri server. Torneremo al più presto.</div>';
+    die();
+}
 
 $paolo94 = new PremiumUser('Paolo', 'Salzano', 'ps@email.it');
 $paolo94->aggiungiProdotto($samsung_s21);
@@ -65,6 +77,9 @@ $paolo94_carrello = $paolo94->getCarrello();
 
             <?php if(isset($product->condizioni)) { ?>
                 <div>il seguente smartphone è: <?php echo $product->condizioni; ?></div>
+            <?php } ?>
+            <?php if(isset($product->pezzi_disponibili)) { ?>
+                <div>ci sono ancora<?php echo $product->pezzi_disponibili; ?> pezzi rimasti</div>
             <?php } ?>
         </div>
         
