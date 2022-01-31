@@ -32,11 +32,11 @@ require_once __DIR__ . '/StandardUser.php';
 require_once __DIR__ . '/PremiumUser.php';
 
 // new classes of products
-$samsung_s21 = new Samsung('Samsung', 'S21', 800);
+$samsung_s21 = new Samsung('Samsung', 'S21', 800, 'android');
 
-$iphone_13 = new Iphone('Iphone', '13', 1000);
+$iphone_13 = new Iphone('Iphone', '13', 1000, 'IOS','');
 
-$huawei_p40 = new Huawei('Huawei', 'P40', 700);
+$huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '');
 
 $paolo94 = new PremiumUser('Paolo', 'Salzano', 'ps@email.it');
 $paolo94->aggiungiProdotto($samsung_s21);
@@ -62,11 +62,13 @@ $paolo94_carrello = $paolo94->getCarrello();
             <h2><?php echo $product->marca; ?> - <?php echo $product->modello; ?></h2>
             <div>sistema operativo: <?php echo $product->sistema_operativo; ?></div>
             <div>Prezzo: <?php echo $product->prezzo; ?> Euro</div>
-        </div>
 
+            <?php if(isset($product->condizioni)) { ?>
+                <div>il seguente smartphone è: <?php echo $product->condizioni; ?></div>
+            <?php } ?>
+        </div>
         
     <?php } ?>
-
     <div>
         <h3>totale carrello <?php echo $paolo94->getFinalDiscount(); ?> Euro</h3>
     </div>

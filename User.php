@@ -30,9 +30,9 @@
 
         public function getFinalDiscount() {
             $totale_carrello = 0;
-            foreach ( $this->carrello as $product) {
-                $totale_carrello += $product->$prezzo;
-            };
+            foreach ($this->carrello as $product) {
+                $totale_carrello += $product->prezzo;
+            }
             $totale_carrello -= ($totale_carrello * $this->discount / 100);
             return $totale_carrello;
         }
