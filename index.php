@@ -38,7 +38,7 @@ $iphone_13 = new Iphone('Iphone', '13', 1000, 'IOS','');
 
 
 try {
-    $huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '','ciao');
+    $huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '','c');
 } catch(Exception $e) {
     // Mandare una mail all'amministatore del sito e al programmatore.
 
@@ -46,7 +46,25 @@ try {
     error_log($e);
 
     // Gestione fatal error
-    echo '<div style="border: 1px solid red; color: red;">Stiamo effettuando una manutenzione ordinaria dei nostri server. Torneremo al più presto.</div>';
+    echo '
+    <html>
+        <head>
+            <link rel="stylesheet" href="css/style.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-1/css/all.min.css" integrity="sha512-wDB6AYiYP4FO5Sxieamqy9wtpAY3qdHMqlhZecIEUu1YjkLw5gQf/4ZDgOzmCBAF5SheMjmugkpUSVoUrGbLkQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        </head>
+        <body>
+            <div class="error">
+                <i class="fas fa-cogs"></i>
+                <h2>
+                    Torneremo al più presto
+                </h2>
+                <p>
+                    Stiamo effettuando una manutenzione ordinaria dei nostri server.
+                </p>
+            </div>
+        </body>
+        </html>
+        ';
     die();
 }
 
@@ -64,6 +82,7 @@ $paolo94_carrello = $paolo94->getCarrello();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop online</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -76,10 +95,10 @@ $paolo94_carrello = $paolo94->getCarrello();
             <div>Prezzo: <?php echo $product->prezzo; ?> Euro</div>
 
             <?php if(isset($product->condizioni)) { ?>
-                <div>il seguente smartphone è: <?php echo $product->condizioni; ?></div>
+                <div class="error">il seguente smartphone è: <?php echo $product->condizioni; ?></div>
             <?php } ?>
             <?php if(isset($product->pezzi_disponibili)) { ?>
-                <div>ci sono ancora<?php echo $product->pezzi_disponibili; ?> pezzi rimasti</div>
+                <div>Affrettati! ci sono ancora <?php echo $product->pezzi_disponibili; ?> pezzi rimasti</div>
             <?php } ?>
         </div>
         
