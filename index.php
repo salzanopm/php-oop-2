@@ -38,7 +38,7 @@ $iphone_13 = new Iphone('Iphone', '13', 1000, 'IOS','');
 
 
 try {
-    $huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '','c');
+    $huawei_p40 = new Huawei('Huawei', 'P40', 700,'android', '', 1);
 } catch(Exception $e) {
     // Mandare una mail all'amministatore del sito e al programmatore.
 
@@ -47,23 +47,22 @@ try {
 
     // Gestione fatal error
     echo '
-    <html>
         <head>
             <link rel="stylesheet" href="css/style.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-1/css/all.min.css" integrity="sha512-wDB6AYiYP4FO5Sxieamqy9wtpAY3qdHMqlhZecIEUu1YjkLw5gQf/4ZDgOzmCBAF5SheMjmugkpUSVoUrGbLkQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-3/css/all.min.css" integrity="sha512-mrvHvYB+442ZngK3AAu1lpiU6n0q/pqOcBmG9oUL0kr6sqYmPCUHyKPlz1uKUXgXHoK7I+tBlYTqzvkh7BzsgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         </head>
         <body>
+
             <div class="error">
                 <i class="fas fa-cogs"></i>
                 <h2>
-                    Torneremo al più presto
+                    Torneremo al più presto.
                 </h2>
                 <p>
-                    Stiamo effettuando una manutenzione ordinaria dei nostri server.
+                    Stiamo effettuando una manutenzione ordinaria dei nostri server. 
                 </p>
             </div>
         </body>
-        </html>
         ';
     die();
 }
@@ -95,7 +94,7 @@ $paolo94_carrello = $paolo94->getCarrello();
             <div>Prezzo: <?php echo $product->prezzo; ?> Euro</div>
 
             <?php if(isset($product->condizioni)) { ?>
-                <div class="error">il seguente smartphone è: <?php echo $product->condizioni; ?></div>
+                <div>il seguente smartphone è: <?php echo $product->condizioni; ?></div>
             <?php } ?>
             <?php if(isset($product->pezzi_disponibili)) { ?>
                 <div>Affrettati! ci sono ancora <?php echo $product->pezzi_disponibili; ?> pezzi rimasti</div>
