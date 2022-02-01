@@ -1,6 +1,8 @@
 <?php
     class Smartphone {
 
+        use Warranty;
+
         public $marca;
 
         public $modello;
